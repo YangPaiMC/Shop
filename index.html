@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>商店 | NB Shop For 3C3U</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans SC', sans-serif; }
+        body { background: #000; color: #fff; }
+        
+        /* 居中容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        .nav { 
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo { 
+            width: 50px; 
+            margin-right: 20px; 
+        }
+        
+        /* 购物提示 */
+        .notice-container {
+            background: #000;
+            padding: 10px 0;
+        }
+        .notice { 
+            background: #20c997; 
+            padding: 15px; 
+            border-radius: 8px;
+            color: #000;
+            position: relative;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .notice::before {
+            content: "!";
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .notice0 { 
+            color: #000;
+        }
+
+        .notice1 { 
+            background: #DA70D6; 
+            padding: 15px; 
+            border-radius: 8px;
+            color: #fff;
+            position: relative;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        /* 商品分类 */
+        .categories { 
+            display: flex; 
+            justify-content: center;
+            gap: 10px; 
+            padding: 20px 0;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .category {
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: #333;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .category.active {
+            background: #666;
+            font-weight: bold;
+        }
+
+        /* 商品列表 */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .product {
+            background: #222;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-img {
+            width: 340.2px;
+            height: 113.4px;
+            background: #444;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background-size: cover;
+            background-position: center;
+        }
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        .product-name { font-weight: bold; }
+        .price { color: #ffd700; }
+
+        /* 数量控制 */
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .quantity-control button {
+            padding: 5px 10px;
+            background: #333;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-to-cart {
+            width: 100%;
+            padding: 8px;
+            background: #0d6efd;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* 购物车 */
+        .cart-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0d6efd;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .cart-btn-small {
+            padding: 2px 8px;
+            background: #333;
+            border: none;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 2px;
+        }
+
+        .cart-btn-remove {
+            padding: 2px 8px;
+            background: #dc3545;
+            border: none;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 2px;
+        }
+        
+        .cart-btn-small:hover {
+            background: #444;
+        }
+
+        .cart-btn-remove:hover {
+            background: #bb2d3b;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: #111;
+            transition: 0.3s;
+            padding: 20px;
+            z-index: 99;
+            overflow-y: auto;
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .cart-table td, .cart-table th {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            text-align: left;
+        }
+        .checkout-btn {
+            background: transparent;
+            border: 2px solid #20c997;
+            color: #20c997;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .checkout-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <h1>NB SHOP | 3C3U.ORG</h1>
+        </div>
+    </nav>
+
+    <div class="notice-container">
+        <div class="container">
+            <div class="notice">
+                下单后进入QQ群聊：1014424628，并私信 群主/管理员 将订单复制给对方。
+                起送费8￥     默认送货员ID: Puncture，有特殊情况会告知!<br>
+                支持 微信/支付宝 支付     配送费规则：主世界一万格内免费配送，超过后以 1万格/0.5￥收费
+            </div>
+            <div class="notice0">
+                ●●●
+            </div>
+            <div class="notice1">
+                购买KIT送 图腾/烟花 一盒（可自选，默认为图腾）
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="categories">
+            <div class="category active">全部</div>
+            <div class="category">Kits</div>
+            <div class="category">PvP</div>
+            <div class="category">方块</div>
+            <div class="category">旅行</div>
+            <div class="category">材料</div>
+            <div class="category">消耗品</div>
+        </div>
+
+        <div class="products">
+            <!-- 商品将通过JS动态生成 -->
+        </div>
+    </div>
+
+    <div class="cart-btn" onclick="toggleCart()">购物车</div>
+    <div class="cart-sidebar">
+        <h3>购物车</h3>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>商品</th>
+                    <th>数量</th>
+                    <th>价格</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button class="checkout-btn" onclick="createOrder()">创建订单</button>
+    </div>
+
+    <script>
+        // 商品数据示例
+        const products = [
+            { 
+                id: 1,
+                name: "KIT | PvP",
+                price: 16,
+                category: "Kits",
+                image: "images/item/pvp_kit.png"
+            },
+            { 
+                id: 2,
+                name: "KIT | 生存",
+                price: 10,
+                category: "Kits",
+                image: "images/item/sc_kit.png"
+            },
+            {
+                id: 3,
+                name: "末影水晶", 
+                price: 25,
+                category: "PvP",
+                image: "images/item/end_crystal.png"
+            },
+            {
+                id: 4,
+                name: "黑曜石", 
+                price: 2,
+                category: "方块",
+                image: "images/item/obsidian.png"
+            },
+            {
+                id: 5,
+                name: "重生锚", 
+                price: 35,
+                category: "PvP",
+                image: "images/item/respawn_anchor.png"
+            },
+            {
+                id: 6,
+                name: "萤石", 
+                price: 10,
+                category: "PvP",
+                image: "images/item/glowstone.png"
+            },
+            {
+                id: 7,
+                name: "不死图腾", 
+                price: 0.5,
+                category: "PvP",
+                image: "images/item/totem_of_undying.png"
+            },
+            {
+                id: 8,
+                name: "附魔之瓶", 
+                price: 8,
+                category: "消耗品",
+                image: "images/item/experience_bottle.png"
+            },
+            {
+                id: 9,
+                name: "金苹果", 
+                price: 10,
+                category: "消耗品",
+                image: "images/item/golden_apple.png"
+            },
+            {
+                id: 10,
+                name: "末影珍珠", 
+                price: 2,
+                category: "消耗品",
+                image: "images/item/ender_pearl.png"
+            },
+            {
+                id: 11,
+                name: "力量II药水", 
+                price: 1,
+                category: "消耗品",
+                image: "images/item/potion_1.png"
+            },
+            {
+                id: 12,
+                name: "神龟II药水", 
+                price: 7,
+                category: "消耗品",
+                image: "images/item/potion_2.png"
+            },
+            {
+                id: 13,
+                name: "末影箱", 
+                price: 7,
+                category: "方块",
+                image: "images/item/ender_chest.png"
+            },
+            {
+                id: 14,
+                name: "绿宝石块", 
+                price: 7,
+                category: "方块",
+                image: "images/item/emerald_block.png"
+            },
+            {
+                id: 15,
+                name: "金块", 
+                price: 7,
+                category: "方块",
+                image: "images/item/golden_block.png"
+            },
+            {
+                id: 16,
+                name: "铁块", 
+                price: 7,
+                category: "方块",
+                image: "images/item/iron_block.png"
+            },
+            {
+                id: 17,
+                name: "粘液块", 
+                price: 7,
+                category: "方块",
+                image: "images/item/slime_block.png"
+            },
+            {
+                id: 18,
+                name: "橡木原木", 
+                price: 7,
+                category: "方块",
+                image: "images/item/oak_log.png"
+            },
+            {
+                id: 19,
+                name: "樱花原木", 
+                price: 7,
+                category: "方块",
+                image: "images/item/cherry_log.png"
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // 初始化商品列表
+        function initProducts() {
+            const container = document.querySelector('.products');
+            container.innerHTML = products.map(product => `
+                <div class="product" data-category="${product.category}">
+                    <div class="product-img" style="background-image: url(${product.image})"></div>
+                    <div class="product-header">
+                        <span class="product-name">${product.name}</span>
+                        <span class="price">${product.price}￥</span>
+                    </div>
+                    <div class="quantity-control">
+                        <button onclick="changeQuantity(this, -1)">-</button>
+                        <span>1</span>
+                        <button onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(this)">加入购物车</button>
+                </div>
+            `).join('');
+        }
+
+        // 修改数量
+        function changeQuantity(btn, delta) {
+            const quantitySpan = btn.parentElement.querySelector('span');
+            let quantity = parseInt(quantitySpan.textContent) + delta;
+            quantity = Math.max(1, quantity);
+            quantitySpan.textContent = quantity;
+        }
+
+        // 加入购物车
+        function addToCart(btn) {
+            const productElement = btn.closest('.product');
+            const productName = productElement.querySelector('.product-name').textContent;
+            const product = products.find(p => p.name === productName);
+            const quantity = parseInt(productElement.querySelector('.quantity-control span').textContent);
+            
+            const existing = cart.find(item => item.id === product.id);
+            if (existing) {
+                existing.quantity += quantity;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        // 更新购物车显示
+        function updateCartDisplay() {
+            const tableBody = document.querySelector('.cart-table tbody');
+            tableBody.innerHTML = '';
+            
+            cart.forEach(item => {
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.price * item.quantity}￥</td>
+                    <td>
+                        <button class="cart-btn-small" onclick="changeCartQuantity(${item.id}, 1, event)">+</button>
+                        <button class="cart-btn-small" onclick="changeCartQuantity(${item.id}, -1, event)">-</button>
+                        <button class="cart-btn-remove" onclick="removeFromCart(${item.id}, event)">×</button>
+                    </td>
+                `;
+            });
+
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            checkoutBtn.disabled = total < 8;
+            checkoutBtn.innerHTML = total < 8 ? '8元起送' : `创建订单 (总价: ${total}￥)`;
+        }
+
+        // 创建订单
+        function createOrder() {
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            let orderText = `==3C3U.XIN==\n`;
+            cart.forEach(item => {
+                orderText += `${item.name} × ${item.quantity} | ${item.price * item.quantity}￥\n`;
+            });
+            orderText += `总价: ${total}元`;
+
+            navigator.clipboard.writeText(orderText).then(() => {
+                if(confirm(`已将订单复制到剪切板，请进入QQ群聊：1014424628，并私信 群主/管理员 将订单复制给对方。\n注意：请将您的游戏ID与送货坐标发至对方`)) {
+                    cart = [];
+                    localStorage.removeItem('cart');
+                    location.reload();
+                }
+            });
+        }
+
+        // 修改购物车商品数量
+        function changeCartQuantity(id, delta, event) {
+            event.stopPropagation(); // 阻止事件冒泡
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity < 1) item.quantity = 1;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+        }
+
+        // 从购物车移除商品
+        function removeFromCart(id, event) {
+            event.stopPropagation(); // 阻止事件冒泡
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+
+        // 切换购物车显示
+        function toggleCart() {
+            const cartSidebar = document.querySelector('.cart-sidebar');
+            cartSidebar.style.right = cartSidebar.style.right === '0px' ? '-400px' : '0px';
+        }
+
+        // 分类过滤
+        function setupCategoryFilters() {
+            document.querySelectorAll('.category').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const category = btn.textContent;
+                    document.querySelectorAll('.product').forEach(product => {
+                        product.style.display = category === '全部' || product.dataset.category === category 
+                            ? 'block' 
+                            : 'none';
+                    });
+                });
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            const cartSidebar = document.querySelector('.cart-sidebar');
+            const isClickInsideCart = e.target.closest('.cart-sidebar');
+            const isClickOnCartBtn = e.target.closest('.cart-btn');
+        
+            if (!isClickInsideCart && !isClickOnCartBtn) {
+                cartSidebar.style.right = '-400px';
+            }
+        });
+
+// 添加这3行初始化代码
+        document.addEventListener('DOMContentLoaded', () => {
+            initProducts();
+            updateCartDisplay();
+            setupCategoryFilters();
+        });
+</script>
+    </script>
+</body>
+</html>
