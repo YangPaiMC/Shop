@@ -194,6 +194,7 @@ const minOrderMsg = document.getElementById('minOrderMsg');
 const checkoutBtn = document.getElementById('checkoutBtn');
 const categoryButtons = document.querySelectorAll('.category-btn');
 const searchInput = document.getElementById('searchInput');
+const closeCartBtn = document.getElementById('closeCartBtn'); // 新增：关闭按钮
 
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
@@ -207,6 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     checkoutBtn.addEventListener('click', createOrder);
+    
+    // 新增：关闭按钮事件监听
+    closeCartBtn.addEventListener('click', closeCart);
     
     // 分类筛选
     categoryButtons.forEach(button => {
