@@ -1,0 +1,367 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background-color: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 70px; /* 为固定导航栏留出空间 */
+}
+
+/* 导航栏 */
+.navbar {
+    background-color: #87ceeb; /* 天蓝色 */
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.shop-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.cart-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+/* 面板通用样式 */
+.panel {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* 商店介绍 */
+.intro-section {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+}
+
+.intro-panel h2 {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.intro-panel ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.intro-panel li {
+    margin-bottom: 8px;
+}
+
+/* 活动优惠 */
+.promo-section {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+}
+
+.promo-panel h3 {
+    font-weight: bold;
+    color: #333;
+}
+
+.promo-panel span {
+    color: #888;
+    font-weight: normal;
+}
+
+/* 商品区域 */
+.products-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.products-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    padding: 8px 15px;
+    background-color: #e0f0ff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.category-btn.active, .category-btn:hover {
+    background-color: #87ceeb;
+    color: white;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* 商品卡片 */
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.product-price {
+    color: #ffa500;
+    font-weight: bold;
+}
+
+/* 新增：商品介绍样式 */
+.product-description {
+    color: #888; /* 灰色字体 */
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.add-to-cart-btn {
+    padding: 10px 0;
+    background-color: #87ceeb;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: auto;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #5aa5d8;
+}
+
+/* 购物车面板 */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: flex-end;
+    z-index: 2000;
+}
+
+.cart-panel {
+    width: 400px;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.cart-panel h2 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: bold;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.quantity-btn {
+    width: 25px;
+    height: 25px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-value {
+    margin: 0 10px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #ff4d4f;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.cart-item-price {
+    color: #ffa500;
+    font-weight: bold;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.total-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.min-order {
+    color: #888;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #87ceeb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.checkout-btn:enabled:hover {
+    background-color: #5aa5d8;
+}
+
+.checkout-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* 响应式设计 */
+@media (max-width: 900px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cart-panel {
+        width: 100%;
+    }
+    
+    .category-filter {
+        justify-content: center;
+    }
+}
