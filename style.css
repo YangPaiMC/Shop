@@ -205,7 +205,7 @@ body {
     font-weight: bold;
 }
 
-/* 新增：商品介绍样式 */
+/* 商品介绍样式 */
 .product-description {
     color: #888; /* 灰色字体 */
     font-size: 0.9rem;
@@ -249,10 +249,34 @@ body {
     overflow-y: auto;
 }
 
-.cart-panel h2 {
+/* 购物车头部 - 添加了关闭按钮 */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
+}
+
+/* 关闭按钮样式 */
+.close-cart-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #888;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.close-cart-btn:hover {
+    color: #333;
 }
 
 .cart-item {
