@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3C3U NB SHOP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="shop-name">3C3U.ORG</div>
+            <button class="cart-btn" id="cartButton">
+                <div class="cart">购物车</div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 商店介绍 -->
+    <section class="intro-section">
+        <div class="panel intro-panel">
+            <h2>NB SHOP</h2>
+            <ul>
+                <li>本商店仅适合3C3U.ORG服务器</li>
+                <li>下单后24小时内送达</li>
+                <li>默认将商品放至距出生点10000格内随机地牢</li>
+                <li>如有特殊需求请私聊备注</li>
+                <li>商店售后群：1014424628</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 活动优惠 -->
+    <section class="promo-section">
+        <div class="panel promo-panel">
+            <h3>🎉活动优惠：<span>新店开业，全场8折</span></h3>
+        </div>
+    </section>
+
+    <!-- 商品区域 -->
+    <section class="products-section">
+        <h2>商品</h2>
+        
+        <!-- 分类筛选 -->
+        <div class="category-filter">
+            <button class="category-btn active" data-category="all">全部</button>
+            <button class="category-btn" data-category="combat">战斗</button>
+            <button class="category-btn" data-category="consumable">消耗品</button>
+            <button class="category-btn" data-category="kit">KIT</button>
+            <button class="category-btn" data-category="building">建筑</button>
+        </div>
+        
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <input type="text" placeholder="搜索商品..." id="searchInput">
+        </div>
+        
+        <!-- 商品列表 -->
+        <div class="products-grid" id="productsGrid">
+            <!-- 商品将通过JavaScript动态添加 -->
+        </div>
+    </section>
+
+    <!-- 购物车面板 -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-panel">
+            <h2>购物车</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- 购物车商品将通过JavaScript动态添加 -->
+            </div>
+            <div class="cart-summary">
+                <p class="total-price">总价: <span id="totalPrice">0</span>￥</p>
+                <p class="min-order" id="minOrderMsg">8元起送</p>
+                <button class="checkout-btn" id="checkoutBtn" disabled>创建订单</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
