@@ -495,6 +495,62 @@
                 justify-content: center;
             }
         }
+        /* 网站底部样式 */
+        .site-footer {
+            background-color: #000000;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .site-footer p {
+            color: #aaa;
+            margin: 5px 0;
+        }
+
+        .site-footer p:first-child {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .github-link {
+            color: #bb86fc;
+            text-decoration: underline;
+            text-decoration-color: #bb86fc;
+            text-underline-offset: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            color: #9c6de0;
+            text-decoration-color: #9c6de0;
+        }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 15px 0;
+        margin-top: 30px;
+    }
+    
+    .site-footer p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        padding: 10px 0;
+    }
+}
     </style>
 </head>
 <body>
@@ -1290,5 +1346,20 @@
             });
         }
     </script>
+    <!-- 网站底部 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>2025 SheepShop</p>
+            <p>
+                本网站源码：
+                <a href="https://github.com/YangPaiMC/Shop" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="github-link">
+                    Github
+                </a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
