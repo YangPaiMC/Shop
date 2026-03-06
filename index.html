@@ -264,17 +264,6 @@
         }
 
         .unit-selector {
-//            display: flex;
-//            margin-bottom: 10px;
-//            border-radius: 5px;
- //           overflow: hidden;
- //           border: 1px solid #444;
- //           display: flex;
-    //        margin-bottom: 10px;
-    //        border-radius: 5px;
-    //        overflow: hidden;
-    //        border: 1px solid #444;
-    //        height: 35px; /* 添加固定高度 */
             display: flex;
             margin-bottom: 10px;
             border-radius: 5px;
@@ -284,12 +273,6 @@
         }
 
         .unit-option {
-     //       flex: 1;
-   //         padding: 5px;
-   //         text-align: center;
-     //       background-color: #2a2a2a;
-    //       cursor: pointer;
-  //          transition: all 0.3s ease;
             flex: 1;
             padding: 5px;
             text-align: center;
@@ -571,12 +554,12 @@
     <!-- 商店介绍 -->
     <section class="store-intro">
         <div class="panel">
-            <h1 class="store-title">3C3U.xin | 物资商店</h1>
+            <h1 class="store-title">3C3U.cn | 物资商店</h1>
             <ul class="store-notice">
-                <li>所有商品均为游戏内物品，非实物</li>
-                <li>当商店在线时，已付款的订单通常在半个小时内完成</li>
-                <li>在下单时注意备注收货方式、收货位置与收货ID</li>
-                <li>商店售后QQ群：1014424628</li>
+                <li>商店QQ群：1014424628</li>
+                <li>起送价为3元，配送坐标主世界8w格内免配送费，超出按0.5元/w格计算收费</li>
+                <li>买物资优先找群主，群主不在线则找管理员。</li>
+                <li>与群内他人交易需谨防上当受骗，出事概不负责</li>
             </ul>
         </div>
     </section>
@@ -584,7 +567,7 @@
     <!-- 活动优惠 -->
     <section class="promotion">
         <div class="panel">
-            <h2 class="promo-title">🎉 活动优惠 🎉：<span class="promo-text">新店开业，全场8折!</span></h2>
+            <h2 class="promo-title">🎉 活动优惠 🎉：<span class="promo-text">满8￥送1盒图腾，满10￥送1盒烟花</span></h2>
         </div>
     </section>
 
@@ -657,8 +640,8 @@
                 name: "旅行 KIT",
                 category: "kit",
                 image: "images/travel_kit.png",
-                pricePerUnit: 7,
-                pricePerBox: 7,
+                pricePerUnit: 6,
+                pricePerBox: 6,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -730,7 +713,7 @@
                 category: "building",
                 image: "images/obsidian.png",
                 pricePerUnit: 2,
-                pricePerBox: 0.3,
+                pricePerBox: 0.5,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -763,7 +746,7 @@
             {
                 id: 11,
                 name: "喷溅型力量药水",
-                category: "consumable",
+                category: "combat",
                 image: "images/strength_potion.png",
                 pricePerUnit: 0.5,
                 pricePerBox: 0.5,
@@ -775,7 +758,7 @@
             {
                 id: 12,
                 name: "喷溅型神龟药水",
-                category: "consumable",
+                category: "combat",
                 image: "images/turtle_master_potion.png",
                 pricePerUnit: 0.5,
                 pricePerBox: 0.5,
@@ -1247,6 +1230,7 @@
             cart.forEach((item, index) => {
                 const cartItem = document.createElement("div");
                 cartItem.className = "cart-item";
+                const itemTotal = (item.price * item.quantity).toFixed(2);
                 cartItem.innerHTML = `
                     <div class="cart-item-info">
                         <div class="cart-item-name">${item.name}</div>
@@ -1258,7 +1242,7 @@
                             <button class="remove-btn" data-index="${index}">删除</button>
                         </div>
                     </div>
-                    <div class="cart-item-price">${item.price * item.quantity}￥</div>
+                    <div class="cart-item-price">${itemTotal}￥</div>
                 `;
                 
                 // 添加数量按钮事件
@@ -1294,7 +1278,7 @@
             
             // 更新总价
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            totalPrice.textContent = total;
+            totalPrice.textContent = total.toFixed(2);
         }
 
         // 更新订单按钮状态
@@ -1332,9 +1316,10 @@
             
             let orderText = "3C3U 商店订单\n";
             cart.forEach(item => {
-                orderText += `${item.name} ×${item.quantity} ${item.unitName} | ${item.price * item.quantity}￥\n`;
+                const itemTotal = (item.price * item.quantity).toFixed(2);
+                orderText += `${item.name} ×${item.quantity} ${item.unitName} | ${itemTotal}￥\n`;
             });
-            orderText += `总价：${total}￥`;
+            orderText += `总价：${total.toFixed(2)}￥`;
             
             // 复制到剪贴板
             navigator.clipboard.writeText(orderText).then(() => {
