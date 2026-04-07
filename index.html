@@ -263,48 +263,36 @@
             margin-bottom: 10px;
         }
 
-        .unit-selector {
-            display: flex;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            overflow: hidden;
-            border: 1px solid #444;
-            height: 35px; /* 添加固定高度 */
-        }
-
-        .unit-option {
-            flex: 1;
-            padding: 5px;
+        .price-item {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 5px;
             text-align: center;
-            background-color: #2a2a2a;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex; /* 使用flex布局 */
-            align-items: center; /* 垂直居中 */
-            justify-content: center; /* 水平居中 */
-            height: 100%; /* 占满父容器高度 */
-            font-weight: bold;
         }
 
-        .unit-option.active {
-            background-color: #6A5ACD;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .product-price {
+        .cart-buttons {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 10px;
             margin-top: auto;
         }
 
-        .price {
-            color: #ffd700;
-            font-weight: bold;
+        .cart-buttons.single {
+            justify-content: center;
+        }
+
+        .cart-buttons.double {
+            justify-content: space-between;
+        }
+
+        .button-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .add-to-cart {
+            width: 100%;
             background-color: #6A5ACD;
             color: #fff;
             border: none;
@@ -317,6 +305,14 @@
 
         .add-to-cart:hover {
             background-color: #7B68EE;
+        }
+
+        .sold-out {
+            color: #ff5252;
+            font-weight: bold;
+            text-align: center;
+            margin-top: auto;
+            padding: 10px 0;
         }
 
         /* 购物车面板 */
@@ -676,8 +672,8 @@
                 name: "末影水晶",
                 category: "combat",
                 image: "images/end_crystal.png",
-                pricePerUnit: 0.5,
-                pricePerBox: 10,
+                pricePerUnit: 0.2,
+                pricePerBox: 5,
                 unit: "组",
                 box: "盒",
                 enableUnit: true,
@@ -688,8 +684,8 @@
                 name: "重生锚",
                 category: "combat",
                 image: "images/respawn_anchor.png",
-                pricePerUnit: 1,
-                pricePerBox: 20,
+                pricePerUnit: 0.2,
+                pricePerBox: 5,
                 unit: "组",
                 box: "盒",
                 enableUnit: true,
@@ -700,8 +696,8 @@
                 name: "萤石",
                 category: "building",
                 image: "images/glowstone.png",
-                pricePerUnit: 2,
-                pricePerBox: 2,
+                pricePerUnit: 1,
+                pricePerBox: 1,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -713,7 +709,7 @@
                 category: "building",
                 image: "images/obsidian.png",
                 pricePerUnit: 2,
-                pricePerBox: 0.5,
+                pricePerBox: 0.2,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -724,8 +720,8 @@
                 name: "金苹果",
                 category: "consumable",
                 image: "images/golden_apple.png",
-                pricePerUnit: 3,
-                pricePerBox: 3,
+                pricePerUnit: 2,
+                pricePerBox: 2,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -736,8 +732,8 @@
                 name: "不死图腾",
                 category: "consumable",
                 image: "images/totem_of_undying.png",
-                pricePerUnit: 0.2,
-                pricePerBox: 0.2,
+                pricePerUnit: 0.3,
+                pricePerBox: 0.3,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -748,8 +744,8 @@
                 name: "喷溅型力量药水",
                 category: "combat",
                 image: "images/strength_potion.png",
-                pricePerUnit: 0.5,
-                pricePerBox: 0.5,
+                pricePerUnit: 0.2,
+                pricePerBox: 0.2,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -772,7 +768,7 @@
                 name: "鞘翅 | 普通",
                 category: "travel",
                 image: "images/elytra_normal.png",
-                pricePerUnit: 1.5,
+                pricePerUnit: 0.8,
                 pricePerBox: 20,
                 unit: "组",
                 box: "盒",
@@ -784,8 +780,8 @@
                 name: "鞘翅 | 满配",
                 category: "travel",
                 image: "images/elytra_full.png",
-                pricePerUnit: 1.8,
-                pricePerBox: 25,
+                pricePerUnit: 1,
+                pricePerBox: 24,
                 unit: "组",
                 box: "盒",
                 enableUnit: true,
@@ -796,8 +792,8 @@
                 name: "烟花火箭 | 1 速",
                 category: "travel",
                 image: "images/firework_rocket.png",
-                pricePerUnit: 0.5,
-                pricePerBox: 0.5,
+                pricePerUnit: 0.2,
+                pricePerBox: 0.2,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -808,8 +804,8 @@
                 name: "烟花火箭 | 3 速",
                 category: "travel",
                 image: "images/firework_rocket.png",
-                pricePerUnit: 0.7,
-                pricePerBox: 0.7,
+                pricePerUnit: 0.6,
+                pricePerBox: 0.6,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -820,8 +816,8 @@
                 name: "末影珍珠",
                 category: "consumable",
                 image: "images/ender_pearl.png",
-                pricePerUnit: 1,
-                pricePerBox: 1,
+                pricePerUnit: 0.15,
+                pricePerBox: 0.15,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -832,8 +828,8 @@
                 name: "附魔之瓶",
                 category: "consumable",
                 image: "images/experience_bottle.png",
-                pricePerUnit: 3,
-                pricePerBox: 3,
+                pricePerUnit: 2,
+                pricePerBox: 2,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -844,8 +840,8 @@
                 name: "绿宝石块",
                 category: "building",
                 image: "images/emerald_block.png",
-                pricePerUnit: 8,
-                pricePerBox: 8,
+                pricePerUnit: 4,
+                pricePerBox: 4,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -856,8 +852,8 @@
                 name: "金块",
                 category: "building",
                 image: "images/gold_block.png",
-                pricePerUnit: 3,
-                pricePerBox: 3,
+                pricePerUnit: 2.5,
+                pricePerBox: 2.5,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -877,11 +873,11 @@
             },
             {
                 id: 22,
-                name: "橡木木头",
+                name: "橡木木头（需其他类型可备注）",
                 category: "building",
                 image: "images/oak_log.png",
-                pricePerUnit: 0.5,
-                pricePerBox: 0.5,
+                pricePerUnit: 0.8,
+                pricePerBox: 0.8,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -892,8 +888,8 @@
                 name: "金胡萝卜",
                 category: "consumable",
                 image: "images/golden_carrot.png",
-                pricePerUnit: 1.9,
-                pricePerBox: 1.9,
+                pricePerUnit: 1,
+                pricePerBox: 1,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -909,7 +905,7 @@
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
-                enableBox: true
+                enableBox: false
             },
             {
                 id: 25,
@@ -921,15 +917,15 @@
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
-                enableBox: true
+                enableBox: false
             },
             {
                 id: 26,
                 name: "恶魂之泪",
                 category: "material",
                 image: "images/ghast_tear.png",
-                pricePerUnit: 1.9,
-                pricePerBox: 1.9,
+                pricePerUnit: 0.9,
+                pricePerBox: 0.9,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -940,8 +936,8 @@
                 name: "沙子",
                 category: "building",
                 image: "images/sand.png",
-                pricePerUnit: 1,
-                pricePerBox: 1,
+                pricePerUnit: 1.5,
+                pricePerBox: 1.5,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -964,8 +960,8 @@
                 name: "玻璃",
                 category: "building",
                 image: "images/glass.png",
-                pricePerUnit: 1.2,
-                pricePerBox: 1.2,
+                pricePerUnit: 1,
+                pricePerBox: 1,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -976,8 +972,8 @@
                 name: "火药",
                 category: "material",
                 image: "images/gunpowder.png",
-                pricePerUnit: 0.5,
-                pricePerBox: 0.5,
+                pricePerUnit: 0.3,
+                pricePerBox: 0.3,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -988,8 +984,8 @@
                 name: "甘蔗",
                 category: "material",
                 image: "images/sugar_cane.png",
-                pricePerUnit: 0.3,
-                pricePerBox: 0.3,
+                pricePerUnit: 0.4,
+                pricePerBox: 0.4,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -1000,8 +996,8 @@
                 name: "红石块",
                 category: "building",
                 image: "images/redstone_block.png",
-                pricePerUnit: 1,
-                pricePerBox: 1,
+                pricePerUnit: 0.4,
+                pricePerBox: 0.4,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -1084,12 +1080,11 @@
             // 清空商品网格
             productsGrid.innerHTML = "";
             
-            // 过滤商品 - 只显示启用了至少一个单位的商品
+            // 过滤商品
             const filteredProducts = products.filter(product => {
                 const matchesCategory = currentCategory === "all" || product.category === currentCategory;
                 const matchesSearch = product.name.toLowerCase().includes(searchQuery);
-                const isEnabled = product.enableUnit || product.enableBox;
-                return matchesCategory && matchesSearch && isEnabled;
+                return matchesCategory && matchesSearch;
             });
             
             // 渲染商品
@@ -1097,80 +1092,53 @@
                 const productCard = document.createElement("div");
                 productCard.className = "product-card";
                 
-                // 根据启用的单位生成不同的HTML结构
-                let unitSelectorHTML = "";
-                let price = product.pricePerUnit;
-                let unitType = "unit";
-                let unitName = product.unit;
-                
-                if (product.enableUnit && product.enableBox) {
-                    // 两个单位都启用 - 显示选择器
-                    unitSelectorHTML = `
-                        <div class="unit-selector">
-                            <div class="unit-option active" data-unit="unit">${product.unit}</div>
-                            <div class="unit-option" data-unit="box">${product.box}</div>
-                        </div>
-                    `;
-                } else if (product.enableUnit) {
-                    // 只启用组单位
-                    unitSelectorHTML = `<div class="unit-selector"><div class="unit-option active" data-unit="unit">${product.unit}</div></div>`;
-                    price = product.pricePerUnit;
-                    unitType = "unit";
-                    unitName = product.unit;
-                } else if (product.enableBox) {
-                    // 只启用盒单位
-                    unitSelectorHTML = `<div class="unit-selector"><div class="unit-option active" data-unit="box">${product.box}</div></div>`;
-                    price = product.pricePerBox;
-                    unitType = "box";
-                    unitName = product.box;
-                }
-                
-                productCard.innerHTML = `
+                let contentHTML = `
                     <div class="product-image-container">
                         <img src="${product.image}" alt="${product.name}" class="product-image">
                     </div>
                     <div class="product-name">${product.name}</div>
-                    ${unitSelectorHTML}
-                    <div class="product-price">
-                        <span class="price">${price}￥</span>
-                        <button class="add-to-cart" data-id="${product.id}" data-unit-type="${unitType}">加入购物车</button>
-                    </div>
                 `;
                 
-                // 如果两个单位都启用，添加单位选择事件
-                if (product.enableUnit && product.enableBox) {
-                    const unitOptions = productCard.querySelectorAll(".unit-option");
-                    unitOptions.forEach(option => {
-                        option.addEventListener("click", () => {
-                            unitOptions.forEach(opt => opt.classList.remove("active"));
-                            option.classList.add("active");
-                            
-                            // 更新价格显示
-                            const priceElement = productCard.querySelector(".price");
-                            const isUnit = option.dataset.unit === "unit";
-                            priceElement.textContent = `${isUnit ? product.pricePerUnit : product.pricePerBox}￥`;
-                            
-                            // 更新加入购物车按钮的数据属性
-                            const addToCartBtn = productCard.querySelector(".add-to-cart");
-                            addToCartBtn.dataset.unitType = option.dataset.unit;
-                        });
-                    });
+                if (product.enableUnit || product.enableBox) {
+                    // 至少启用了一个单位
+                    const isDouble = product.enableUnit && product.enableBox;
+                    const buttonClass = isDouble ? 'double' : 'single';
+                    
+                    contentHTML += `<div class="cart-buttons ${buttonClass}">`;
+                    
+                    if (product.enableUnit) {
+                        contentHTML += `
+                            <div class="button-container">
+                                <div class="price-item">${product.pricePerUnit.toFixed(2)}￥ / ${product.unit}</div>
+                                <button class="add-to-cart" data-id="${product.id}" data-unit-type="unit">加入购物车(${product.unit})</button>
+                            </div>
+                        `;
+                    }
+                    
+                    if (product.enableBox) {
+                        contentHTML += `
+                            <div class="button-container">
+                                <div class="price-item">${product.pricePerBox.toFixed(2)}￥ / ${product.box}</div>
+                                <button class="add-to-cart" data-id="${product.id}" data-unit-type="box">加入购物车(${product.box})</button>
+                            </div>
+                        `;
+                    }
+                    
+                    contentHTML += '</div>';
+                } else {
+                    // 都没有启用，显示售罄
+                    contentHTML += '<div class="sold-out">商品已售罄</div>';
                 }
                 
+                productCard.innerHTML = contentHTML;
+                
                 // 添加购物车按钮事件
-                const addToCartBtn = productCard.querySelector(".add-to-cart");
-                addToCartBtn.addEventListener("click", () => {
-                    let unitType;
-                    if (product.enableUnit && product.enableBox) {
-                        // 两个单位都启用，获取当前选择的单位
-                        const activeUnit = productCard.querySelector(".unit-option.active").dataset.unit;
-                        unitType = activeUnit;
-                    } else if (product.enableUnit) {
-                        unitType = "unit";
-                    } else if (product.enableBox) {
-                        unitType = "box";
-                    }
-                    addToCart(product.id, unitType);
+                const addToCartBtns = productCard.querySelectorAll(".add-to-cart");
+                addToCartBtns.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        const unitType = btn.dataset.unitType;
+                        addToCart(product.id, unitType);
+                    });
                 });
                 
                 productsGrid.appendChild(productCard);
@@ -1334,7 +1302,7 @@
     <!-- 网站底部 -->
     <footer class="site-footer">
         <div class="footer-content">
-            <p>2025 SheepShop</p>
+            <p>2026 SheepShop</p>
             <p>
                 本网站源码：
                 <a href="https://github.com/YangPaiMC/Shop" 
