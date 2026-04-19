@@ -672,8 +672,8 @@
                 name: "末影水晶",
                 category: "combat",
                 image: "images/end_crystal.png",
-                pricePerUnit: 0.2,
-                pricePerBox: 5,
+                pricePerUnit: 0.5,
+                pricePerBox: 6,
                 unit: "组",
                 box: "盒",
                 enableUnit: true,
@@ -684,8 +684,8 @@
                 name: "重生锚",
                 category: "combat",
                 image: "images/respawn_anchor.png",
-                pricePerUnit: 0.2,
-                pricePerBox: 5,
+                pricePerUnit: 0.3,
+                pricePerBox: 7,
                 unit: "组",
                 box: "盒",
                 enableUnit: true,
@@ -720,8 +720,8 @@
                 name: "金苹果",
                 category: "consumable",
                 image: "images/golden_apple.png",
-                pricePerUnit: 2,
-                pricePerBox: 2,
+                pricePerUnit: 2.6,
+                pricePerBox: 2.6,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -756,32 +756,20 @@
                 name: "喷溅型神龟药水",
                 category: "combat",
                 image: "images/turtle_master_potion.png",
-                pricePerUnit: 0.5,
-                pricePerBox: 0.5,
+                pricePerUnit: 0.8,
+                pricePerBox: 0.8,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
                 enableBox: true
             },
             {
-                id: 13,
-                name: "鞘翅 | 普通",
-                category: "travel",
-                image: "images/elytra_normal.png",
-                pricePerUnit: 0.8,
-                pricePerBox: 20,
-                unit: "组",
-                box: "盒",
-                enableUnit: true,
-                enableBox: true
-            },
-            {
                 id: 14,
-                name: "鞘翅 | 满配",
+                name: "鞘翅",
                 category: "travel",
                 image: "images/elytra_full.png",
                 pricePerUnit: 1,
-                pricePerBox: 24,
+                pricePerBox: 20,
                 unit: "组",
                 box: "盒",
                 enableUnit: true,
@@ -816,8 +804,8 @@
                 name: "末影珍珠",
                 category: "building",
                 image: "images/ender_pearl.png",
-                pricePerUnit: 0.2,
-                pricePerBox: 0.2,
+                pricePerUnit: 0.15,
+                pricePerBox: 0.15,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -840,8 +828,8 @@
                 name: "绿宝石块",
                 category: "building",
                 image: "images/emerald_block.png",
-                pricePerUnit: 4,
-                pricePerBox: 4,
+                pricePerUnit: 6,
+                pricePerBox: 6,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -996,8 +984,8 @@
                 name: "红石块",
                 category: "building",
                 image: "images/redstone_block.png",
-                pricePerUnit: 1,
-                pricePerBox: 1,
+                pricePerUnit: 0.4,
+                pricePerBox: 0.4,
                 unit: "组",
                 box: "盒",
                 enableUnit: false,
@@ -1253,14 +1241,14 @@
         function updateOrderButton() {
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            if (total >= 8) {
+            if (total >= 3) {
                 createOrderBtn.disabled = false;
                 createOrderBtn.classList.add("active");
                 createOrderBtn.textContent = "创建订单";
             } else {
                 createOrderBtn.disabled = true;
                 createOrderBtn.classList.remove("active");
-                createOrderBtn.textContent = "8元起送";
+                createOrderBtn.textContent = "3元起送";
             }
         }
 
