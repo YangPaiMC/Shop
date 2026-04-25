@@ -553,7 +553,7 @@
             <h1 class="store-title">3C3U.cn | 物资商店</h1>
             <ul class="store-notice">
                 <li>商店QQ群：1014424628</li>
-                <li>起送价为3元，配送坐标主世界8w格内免配送费，超出按0.5元/w格计算收费</li>
+                <li>起送价为6元，配送坐标主世界8w格内免配送费，超出按0.5元/w格计算收费</li>
                 <li>买物资优先找群主，群主不在线则找管理员。</li>
                 <li>与群内他人交易需谨防上当受骗，出事概不负责</li>
             </ul>
@@ -605,7 +605,7 @@
         </div>
         <div class="cart-footer">
             <div class="total-price">总价: <span id="totalPrice">0</span>￥</div>
-            <button class="create-order-btn" id="createOrderBtn" disabled>8元起送</button>
+            <button class="create-order-btn" id="createOrderBtn" disabled>6元起送</button>
         </div>
     </div>
 
@@ -1241,14 +1241,14 @@
         function updateOrderButton() {
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            if (total >= 3) {
+            if (total >= 6) {
                 createOrderBtn.disabled = false;
                 createOrderBtn.classList.add("active");
                 createOrderBtn.textContent = "创建订单";
             } else {
                 createOrderBtn.disabled = true;
                 createOrderBtn.classList.remove("active");
-                createOrderBtn.textContent = "3元起送";
+                createOrderBtn.textContent = "6元起送";
             }
         }
 
