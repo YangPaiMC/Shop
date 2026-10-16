@@ -64,8 +64,8 @@
         .shop-icon {
             width: 40px;
             height: 40px;
-            image-rendering: auto;
-            -webkit-image-rendering: auto;
+            image-rendering: pixelated;
+            -webkit-image-rendering: pixelated;
         }
 
         .cart-btn {
@@ -112,6 +112,17 @@
             padding: 0 20px;
         }
 
+        .intro-panel {
+            display: flex;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .intro-content {
+            flex: 1;
+            min-width: 0;
+        }
+
         .store-title {
             font-size: 1.8rem;
             font-weight: bold;
@@ -138,6 +149,187 @@
             height: 8px;
             background-color: var(--primary-color);
             border-radius: 50%;
+        }
+
+        .join-link {
+            color: var(--accent-gold);
+            text-decoration: underline;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .join-link:hover {
+            color: var(--primary-color);
+            text-decoration-color: var(--primary-color);
+        }
+
+        .store-ad {
+            width: 450px;
+            flex-shrink: 0;
+            background-color: var(--bg-card);
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .ad-title {
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-family: 'SimHei', 'Heiti SC', 'Microsoft YaHei', '黑体', sans-serif;
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .ad-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .ad-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .ad-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ad-slide .product-image-container {
+            flex: 0 0 auto;
+            width: 250px;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-panel);
+            border-radius: 8px;
+        }
+
+        .ad-product-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .ad-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            image-rendering: pixelated;
+            -webkit-image-rendering: pixelated;
+        }
+
+        .ad-slide .ad-product-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            text-align: left;
+        }
+
+        .ad-slide .ad-product-price {
+            color: var(--accent-gold);
+            font-weight: bold;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        .ad-slide .ad-product-category {
+            display: inline-block;
+            background-color: rgba(0, 188, 212, 0.15);
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .ad-detail-btn {
+            margin-top: 10px;
+            background-color: var(--primary-color);
+            color: #000;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .ad-detail-btn:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .ad-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: background 0.3s ease;
+        }
+
+        .ad-nav-btn:hover {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        .ad-nav-btn.prev {
+            left: 8px;
+        }
+
+        .ad-nav-btn.next {
+            right: 8px;
+        }
+
+        .ad-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .ad-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #444;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            padding: 0;
+        }
+
+        .ad-dot.active {
+            background-color: var(--accent-gold);
         }
 
         .promotion {
@@ -344,6 +536,20 @@
         .product-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary-color);
+        }
+
+        .product-card.highlight {
+            border-color: var(--accent-gold);
+            animation: ad-highlight-pulse 1s ease-in-out 3;
+        }
+
+        @keyframes ad-highlight-pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.6), 0 0 25px rgba(255, 215, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.9), 0 0 40px rgba(255, 215, 0, 0.8);
+            }
         }
 
         .product-image-container {
@@ -648,6 +854,14 @@
                 width: 100%;
                 right: -100%;
             }
+
+            .intro-panel {
+                flex-direction: column;
+            }
+
+            .store-ad {
+                width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -740,15 +954,27 @@
     </nav>
 
     <section class="store-intro">
-        <div class="panel">
-            <h1 class="store-title">3C3U.cn | 物资商店</h1>
-            <ul class="store-notice">
-                <li>商店QQ群：1014424628</li>
-                <li>起送价为5元，配送坐标主世界8w格内免配送费，超出按0.5元/w格计算收费</li>
-                <li>买物资优先找群主，上学日不在线则找管理员。</li>
-                <li>与群内他人交易需谨防上当受骗，出事概不负责</li>
-                <li>单次购买满100元可减10元</li>
-            </ul>
+        <div class="panel intro-panel">
+            <div class="intro-content">
+                <h1 class="store-title">3C3U.cn | 物资商店</h1>
+                <ul class="store-notice">
+                    <li>商店QQ群：1014424628 <a href="https://qm.qq.com/q/bjIX20WH6g" target="_blank" rel="noopener" class="join-link">点击加入</a></li>
+                    <li>起送价为8元，配送坐标主世界8w格内免配送费，超出按0.5元/w格计算收费</li>
+                    <li>买物资优先找群主，上学日不在线则找管理员。</li>
+                    <li>与群内他人交易需谨防上当受骗，出事概不负责</li>
+                    <li>单次购买满100元可减10元</li>
+                </ul>
+            </div>
+
+            <div class="store-ad">
+                <div class="ad-title">新品上市</div>
+                <div class="ad-carousel" id="adCarousel">
+                    <div class="ad-track" id="adTrack"></div>
+                    <button class="ad-nav-btn prev" id="adPrev" aria-label="上一个">&#10094;</button>
+                    <button class="ad-nav-btn next" id="adNext" aria-label="下一个">&#10095;</button>
+                </div>
+                <div class="ad-dots" id="adDots"></div>
+            </div>
         </div>
     </section>
 
@@ -784,7 +1010,7 @@
         </div>
         <div class="cart-footer">
             <div class="total-price">总价: <span id="totalPrice">0</span>￥</div>
-            <button class="create-order-btn" id="createOrderBtn" disabled>5元起送</button>
+            <button class="create-order-btn" id="createOrderBtn" disabled>8元起送</button>
         </div>
     </div>
 
@@ -795,8 +1021,8 @@
             { id: 53, name: "PvP Kit", category: "kit", image: "images/4.png", pricePerUnit: 8, pricePerBox: 8, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 54, name: "_XiYang_'s Regear", category: "kit", image: "images/5.png", pricePerUnit: 2, pricePerBox: 2, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 55, name: "YangPai_MC's Regear", category: "kit", image: "images/6.png", pricePerUnit: 2.9, pricePerBox: 2.9, unit: "组", box: "盒", enableUnit: false, enableBox: true },
-            { id: 1, name: "末影水晶", category: "combat", image: "images/end_crystal.png", pricePerUnit: 0.5, pricePerBox: 8, unit: "组", box: "盒", enableUnit: true, enableBox: true },
-            { id: 2, name: "重生锚", category: "combat", image: "images/respawn_anchor.png", pricePerUnit: 1, pricePerBox: 10, unit: "组", box: "盒", enableUnit: true, enableBox: true },
+            { id: 1, name: "末影水晶", category: "combat", image: "images/end_crystal.png", pricePerUnit: 0.5, pricePerBox: 6, unit: "组", box: "盒", enableUnit: true, enableBox: true },
+            { id: 2, name: "重生锚", category: "combat", image: "images/respawn_anchor.png", pricePerUnit: 1, pricePerBox: 8, unit: "组", box: "盒", enableUnit: true, enableBox: true },
             { id: 3, name: "萤石", category: "building", image: "images/glowstone.png", pricePerUnit: 1, pricePerBox: 1, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 4, name: "黑曜石", category: "building", image: "images/obsidian.png", pricePerUnit: 2, pricePerBox: 0.5, unit: "组", box: "盒", enableUnit: false, enableBox: true },    
             { id: 5, name: "金苹果", category: "consumable", image: "images/golden_apple.png", pricePerUnit: 2, pricePerBox: 3, unit: "组", box: "盒", enableUnit: false, enableBox: true },
@@ -816,7 +1042,7 @@
             { id: 20, name: "烈焰棒", category: "material", image: "images/blaze_rod.png", pricePerUnit: 1, pricePerBox: 1, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 21, name: "恶魂之泪", category: "material", image: "images/ghast_tear.png", pricePerUnit: 0.9, pricePerBox: 0.9, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 22, name: "沙子", category: "building", image: "images/sand.png", pricePerUnit: 1.5, pricePerBox: 1.5, unit: "组", box: "盒", enableUnit: false, enableBox: true },
-            { id: 23, name: "沙砾", category: "building", image: "images/gravel.png", pricePerUnit: 0.5, pricePerBox: 0.5, unit: "组", box: "盒", enableUnit: false, enableBox: false },
+            { id: 23, name: "沙砾", category: "building", image: "images/gravel.png", pricePerUnit: 0.5, pricePerBox: 0.5, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 24, name: "玻璃", category: "building", image: "images/glass.png", pricePerUnit: 1, pricePerBox: 1, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 25, name: "火药", category: "material", image: "images/gunpowder.png", pricePerUnit: 0.5, pricePerBox: 0.5, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 26, name: "甘蔗", category: "material", image: "images/sugar_cane.png", pricePerUnit: 0.5, pricePerBox: 0.5, unit: "组", box: "盒", enableUnit: false, enableBox: true },
@@ -824,8 +1050,13 @@
             { id: 28, name: "活塞", category: "building", image: "images/piston.png", pricePerUnit: 4, pricePerBox: 4, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 29, name: "海晶灯", category: "building", image: "images/sea_lantern.png", pricePerUnit: 3, pricePerBox: 3, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 30, name: "下界石英", category: "material", image: "images/quartz.png", pricePerUnit: 1, pricePerBox: 1, unit: "组", box: "盒", enableUnit: false, enableBox: true },
-            { id: 31, name: "末影箱", category: "building", image: "images/ender_chest.png", pricePerUnit: 1, pricePerBox: 6, unit: "组", box: "盒", enableUnit: false, enableBox: true },
-            { id: 32, name: "岩浆块", category: "building", image: "images/magma_block.png", pricePerUnit: 1, pricePerBox: 3, unit: "组", box: "盒", enableUnit: false, enableBox: true }
+            { id: 31, name: "末影箱", category: "building", image: "images/ender_chest.png", pricePerUnit: 1, pricePerBox: 4, unit: "组", box: "盒", enableUnit: false, enableBox: true },
+            { id: 32, name: "岩浆块", category: "building", image: "images/magma_block.png", pricePerUnit: 1, pricePerBox: 2, unit: "组", box: "盒", enableUnit: false, enableBox: true },
+            { id: 33, name: "末地烛", category: "building", image: "images/end_rod.png", pricePerUnit: 1, pricePerBox: 2, unit: "组", box: "盒", enableUnit: false, enableBox: true },
+            { id: 34, name: "不详试炼钥匙", category: "material", image: "images/ominous_trial_key.png", pricePerUnit: 1, pricePerBox: 20, unit: "组", box: "盒", enableUnit: true, enableBox: true },
+            { id: 35, name: "赭黄蛙明灯", category: "building", image: "images/ochre_froglight.png", pricePerUnit: 1, pricePerBox: 3, unit: "组", box: "盒", enableUnit: false, enableBox: true },
+            { id: 36, name: "青翠蛙明灯", category: "building", image: "images/verdant_froglight.png", pricePerUnit: 1, pricePerBox: 3, unit: "组", box: "盒", enableUnit: false, enableBox: true },
+            { id: 37, name: "珠光蛙明灯", category: "building", image: "images/pearlescent_froglight.png", pricePerUnit: 1, pricePerBox: 3, unit: "组", box: "盒", enableUnit: false, enableBox: true },
         ];
 
         const categories = [
@@ -860,6 +1091,7 @@
             renderBrowsingCategories();
             setupEventListeners();
             updateCartCount();
+            initAdCarousel();
         });
 
         function setupEventListeners() {
@@ -875,15 +1107,175 @@
             createOrderBtn.addEventListener("click", createOrder);
         }
 
+        function initAdCarousel() {
+            const adTrack = document.getElementById("adTrack");
+            const adDots = document.getElementById("adDots");
+            const adPrev = document.getElementById("adPrev");
+            const adNext = document.getElementById("adNext");
+            const adCarousel = document.getElementById("adCarousel");
+
+            const newArrivalIds = [34, 35, 36, 37, 33];
+            const adProducts = newArrivalIds
+                .map(id => products.find(p => p.id === id))
+                .filter(Boolean);
+
+            if (!adProducts.length) return;
+
+            let currentIndex = 0;
+            let autoTimer = null;
+
+            adProducts.forEach((product, index) => {
+                const slide = document.createElement("div");
+                slide.className = "ad-slide";
+                const categoryName = (categories.find(c => c.id === product.category) || {}).name || "其他";
+                const price = product.enableBox
+                    ? `${product.pricePerBox.toFixed(2)}￥ / ${product.box}`
+                    : `${product.pricePerUnit.toFixed(2)}￥ / ${product.unit}`;
+                slide.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="ad-product-info">
+                        <div class="ad-product-name">${product.name}</div>
+                        <div class="ad-product-category">${categoryName}</div>
+                        <div class="ad-product-price">${price}</div>
+                        <button class="ad-detail-btn" data-product-id="${product.id}">查看详情</button>
+                    </div>
+                `;
+                adTrack.appendChild(slide);
+
+                const dot = document.createElement("button");
+                dot.className = "ad-dot";
+                if (index === 0) dot.classList.add("active");
+                dot.setAttribute("aria-label", `第${index + 1}个商品`);
+                dot.addEventListener("click", () => {
+                    goToSlide(index);
+                    restartAutoPlay();
+                });
+                adDots.appendChild(dot);
+            });
+
+            const dots = adDots.querySelectorAll(".ad-dot");
+
+            function goToSlide(index) {
+                currentIndex = index;
+                adTrack.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+            }
+
+            function nextSlide() {
+                goToSlide((currentIndex + 1) % adProducts.length);
+            }
+
+            function prevSlide() {
+                goToSlide((currentIndex - 1 + adProducts.length) % adProducts.length);
+            }
+
+            function startAutoPlay() {
+                autoTimer = setInterval(nextSlide, 4000);
+            }
+
+            function restartAutoPlay() {
+                clearInterval(autoTimer);
+                startAutoPlay();
+            }
+
+            adNext.addEventListener("click", () => {
+                nextSlide();
+                restartAutoPlay();
+            });
+            adPrev.addEventListener("click", () => {
+                prevSlide();
+                restartAutoPlay();
+            });
+
+            adTrack.addEventListener("click", (e) => {
+                const detailBtn = e.target.closest(".ad-detail-btn");
+                if (!detailBtn) return;
+                goToProductFromAd(Number(detailBtn.dataset.productId));
+            });
+
+            let startX = 0;
+            let isDragging = false;
+
+            adCarousel.addEventListener("touchstart", (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+            adCarousel.addEventListener("touchend", (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) nextSlide();
+                    else prevSlide();
+                    restartAutoPlay();
+                }
+            });
+
+            adCarousel.addEventListener("mousedown", (e) => {
+                startX = e.clientX;
+                isDragging = true;
+                e.preventDefault();
+            });
+            window.addEventListener("mouseup", (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = startX - e.clientX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) nextSlide();
+                    else prevSlide();
+                    restartAutoPlay();
+                }
+            });
+
+            startAutoPlay();
+        }
+
+        function goToProductFromAd(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            searchQuery = "";
+            searchInput.value = "";
+            navigateToCategory(product.category);
+
+            setTimeout(() => {
+                const targetCard = productsGrid.querySelector(`.product-card[data-product-id="${productId}"]`);
+                if (targetCard) {
+                    targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+                    targetCard.classList.add("highlight");
+                    setTimeout(() => {
+                        targetCard.classList.remove("highlight");
+                    }, 3000);
+                }
+            }, 500);
+        }
+
         function renderLandingCategories() {
             landingCategories.innerHTML = "";
-            
+
+            const allCount = products.filter(p => p.enableUnit || p.enableBox).length;
+            const allCard = document.createElement("div");
+            allCard.className = "landing-category-card";
+            allCard.innerHTML = `
+                <div class="landing-category-icon">
+                    <img src="images/experience_bottle.png" alt="全部">
+                </div>
+                <div class="landing-category-name">全部</div>
+                <div class="landing-category-count">${allCount}件商品</div>
+            `;
+            allCard.addEventListener("click", () => {
+                navigateToCategory("all");
+            });
+            landingCategories.appendChild(allCard);
+
             categories.forEach((category, index) => {
                 const count = products.filter(p => p.category === category.id && (p.enableUnit || p.enableBox)).length;
                 
                 const card = document.createElement("div");
                 card.className = "landing-category-card";
-                card.style.animationDelay = `${index * 0.1}s`;
+                card.style.animationDelay = `${(index + 1) * 0.1}s`;
                 card.innerHTML = `
                     <div class="landing-category-icon">
                         <img src="${category.icon}" alt="${category.name}">
@@ -998,6 +1390,7 @@
             filteredProducts.forEach((product) => {
                 const productCard = document.createElement("div");
                 productCard.className = "product-card";
+                productCard.dataset.productId = product.id;
                 
                 let contentHTML = `
                     <div class="product-image-container">
@@ -1164,7 +1557,7 @@
         function updateOrderButton() {
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            if (total >= 5) {
+            if (total >= 8) {
                 createOrderBtn.disabled = false;
                 createOrderBtn.classList.add("active");
                 createOrderBtn.textContent = "创建订单";
@@ -1743,7 +2136,7 @@
                    class="github-link">
                     Github
                 </a>
-                上次更新：2026-08-4
+                上次更新：2026-07-20
             </p>
         </div>
     </footer>
