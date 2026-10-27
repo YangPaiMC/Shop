@@ -1019,8 +1019,10 @@
             { id: 51, name: "旅行 KIT", category: "kit", image: "images/2.png", pricePerUnit: 5, pricePerBox: 5, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 52, name: "生存 KIT", category: "kit", image: "images/3.png", pricePerUnit: 7, pricePerBox: 7, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 53, name: "PvP Kit", category: "kit", image: "images/4.png", pricePerUnit: 8, pricePerBox: 8, unit: "组", box: "盒", enableUnit: false, enableBox: true },
+            { id: 57, name: "空战 KIT", category: "kit", image: "images/8.png", pricePerUnit: 14, pricePerBox: 14, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 54, name: "_XiYang_'s Regear", category: "kit", image: "images/5.png", pricePerUnit: 2, pricePerBox: 2, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 55, name: "YangPai_MC's Regear", category: "kit", image: "images/6.png", pricePerUnit: 2.9, pricePerBox: 2.9, unit: "组", box: "盒", enableUnit: false, enableBox: true },
+            { id: 56, name: "空战补给", category: "kit", image: "images/7.png", pricePerUnit: 1.5, pricePerBox: 1.5, unit: "组", box: "盒", enableUnit: false, enableBox: true },
             { id: 1, name: "末影水晶", category: "combat", image: "images/end_crystal.png", pricePerUnit: 0.5, pricePerBox: 6, unit: "组", box: "盒", enableUnit: true, enableBox: true },
             { id: 2, name: "重生锚", category: "combat", image: "images/respawn_anchor.png", pricePerUnit: 1, pricePerBox: 8, unit: "组", box: "盒", enableUnit: true, enableBox: true },
             { id: 3, name: "萤石", category: "building", image: "images/glowstone.png", pricePerUnit: 1, pricePerBox: 1, unit: "组", box: "盒", enableUnit: false, enableBox: true },
@@ -1114,7 +1116,7 @@
             const adNext = document.getElementById("adNext");
             const adCarousel = document.getElementById("adCarousel");
 
-            const newArrivalIds = [34, 35, 36, 37, 33];
+            const newArrivalIds = [34, 57, 35, 56, 33];
             const adProducts = newArrivalIds
                 .map(id => products.find(p => p.id === id))
                 .filter(Boolean);
